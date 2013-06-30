@@ -85,7 +85,10 @@ class Email_templates_model extends Base_module_model {
 			$params['bcc'] = $template['copied_to'];
 			$params['subject'] = $template['subject'];
 			$params['message'] = $this->parse_template($invoice, $user,$template);
-			$params['attachments'] = $this->getAttachmentPath($invoice);
+            $params['attachments'] = '';
+            if($this->fuel->invoices->config('attach_pdf_to_email')){
+			    $params['attachments'] = $this->getAttachmentPath($invoice);
+            }
 			$params['use_dev_mode'] = FALSE;
 
 			$this->my_fuel_notification->send($params);
