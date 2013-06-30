@@ -10,7 +10,6 @@ class Invoices {
 
 
     function getInvoicePDF($f){
-        $CI = get_instance();
 
         //USES PHANTOMJS TO RENDER THE PDF
         $CI =& get_instance();
@@ -27,7 +26,6 @@ class Invoices {
 var page = require('webpage').create();
 page.content = $html
 page.paperSize = {format: 'A4', orientation: 'portrait'}
-console.log(page.content + 'hello2')
     page.render('$file');
     phantom.exit();";
         $pa = file_put_contents(getcwd().'/assets/pdf/'.$CI->fuel->invoices->config('invoices_pdf_folder').'/phantomaction.js',$script);
@@ -39,6 +37,7 @@ console.log(page.content + 'hello2')
     }
 
     function getInvoiceHTML($f){
+        //change the CSS/HTML to your liking!
         $html = "";
         ob_start(); ?>
 
@@ -101,7 +100,6 @@ console.log(page.content + 'hello2')
         <body>
         <div class="container">
             <div class="header">
-                <!--<div class="img"><img src="/logo-3.png" /></div>-->
                 <div class="logo">cham<span>soft</span></div>
             </div><!--end header-->
             <div class="clear-both"></div>

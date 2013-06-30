@@ -13,4 +13,4 @@ $config['permissions'] = array('invoices','invoices/create','invoices/delete','i
 $config['migration_version'] = 0;
 $config['install_sql'] = 'invoices_install.sql';
 $config['uninstall_sql'] = 'invoices_uninstall.sql';
-$config['repo'] = 'git://github.com/guywillett/FUEL-CMS-Invoices-Module.git';
+$config['repo'] = 'git://github.com/guywillett/Fuel-CMS-Invoices-Module.git';

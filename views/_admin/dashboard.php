@@ -1,6 +1,9 @@
-    <style>.unpaid{color:blue;}.overdue,.overdue:visited{color:red;}</style>
+    <style>.unpaid{color:blue;}
+        .overdue,.overdue:visited{color:red;}</style>
+
    <div style="float:left;margin-right:30px;"> <h3>Contact Chamsoft</h3>
     <span>Email: <a href="mailto:info@chamsoft.co.uk">Guy at Chamsoft</a></span></div>
+
 		<div style="float:left;margin-right:30px;"><h3>Unpaid Invoices</h3>
         
 		<ul class="nobullets">

@@ -20,7 +20,7 @@ Summary
 
 6. Displays unpaid and overdue invoices on the dashboard of the admin area. Overdue are coloured red.
 
-7. Simple one-click Cron set up, by integrating with Cronjobs Module, to automate the process nightly.
+7. Simple one-click Cron set up, by integrating with Cronjobs Module, to automate the process nightly (sends recurring invoices and reminders for overdue invoices).
 
 8. Options to include the PDF as an attachment to the emails and/or have a (fairly secure) download link.
 
@@ -32,15 +32,15 @@ Installation
 There are 2 ways to install this module. If you use GIT then you can use the following method to create a submodule:
 
 Using Git
-=========
+---------
 
 1. Open up a Terminal window, "cd" to your FUEL CMS installation then type:
-    php index.php fuel/installer/add_git_submodule git://github.com/guywillett/FUEL-CMS-Invoices-Module.git invoices
+    <pre>php index.php fuel/installer/add_git_submodule git://github.com/guywillett/FUEL-CMS-Invoices-Module.git invoices</pre>
 
-2.  Then to install, type in: php index.php fuel/installer/install invoices
+2.  Then to install, type in: <pre>php index.php fuel/installer/install invoices</pre>
 
 Manual
-======
+------
 
 1. Download the zip file from GitHub: https://github.com/guywillett/FUEL-CMS-Invoices-Module
 
@@ -51,17 +51,17 @@ Manual
 4. Add "invoices" to the the $config['modules_allowed'] in fuel/application/config/MY_fuel.php
 
 Uninstall
-=========
+---------
 
 To uninstall the module which will remove any permissions and database information:
- php index.php fuel/installer/uninstall invoices
+<pre> php index.php fuel/installer/uninstall invoices</pre>
 
 License
 =======
 
 This Invoices Module is licensed under APACHE 2
 
-Documentation
+Other Documentation
 =============
 
 Invoice & Thank You Page design:  You should alter the Downloads view and the html/css in getInvoiceHTML() in libraries to how you want .
@@ -77,7 +77,7 @@ You can override the $config values by using the Settings page in the admin area
 
 To take advantage of the integration with the Cronjobs Module, make sure you install the Cronjobs Module :)
 
-The email templates must be named 'invoice' and 'reminder'.
+The email templates must be named 'invoice' and 'reminder' (they are created for you, but need personalising, during installation).
 
 The Invoices Module uses Phantomjs to render the HTML/CSS for the invoice into a PDF file (all the code is written).  I chose this because it is very easy to install and can be useful for other things.
 Make sure you have Phantomjs installed! You do not need to know how to use it.

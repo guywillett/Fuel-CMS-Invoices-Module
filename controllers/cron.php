@@ -12,7 +12,6 @@
         parent::__construct();
         $this->load->module_library(FUEL_FOLDER, 'fuel');
         $this->load->module_model(INVOICES_FOLDER, 'email_templates_model');
-        $this->load->module_library(INVOICES_FOLDER, 'invoices');
     }
 
     function _remap($method){

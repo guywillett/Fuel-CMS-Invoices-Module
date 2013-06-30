@@ -10,7 +10,6 @@ class Email_templates_model extends Base_module_model {
 	function __construct()
 	{
 		parent::__construct('email_templates'); // table name
-        $this->load->module_model(INVOICES_FOLDER, 'invoices_model');
 	}
 	
 	function list_items($limit = NULL, $offset = NULL, $col = 'name', $order = 'asc'){
@@ -34,9 +33,6 @@ class Email_templates_model extends Base_module_model {
 	function getLink($report){
         //NOTE IT IS A SECURITY ISSUE TO USE THIS LINK
         //site_url() gives 'localhost' during cron, but chamsoft.co.uk when done manually via CMS...
-		//$link = base_url("/assets/pdf/".$report['id']."_".$report['name'].".pdf");
-       // $link = "www.chamsoft.co.uk/assets/pdf/".$report['id']."_".$report['name'].".pdf";
-       // $link = "www.chamsoft.co.uk/assets/pdf/".$this->fuel->invoices->config('invoices_pdf_folder')."/".$report['file'];
         $link = $this->fuel->invoices->config('domain').FUEL_ROUTE."invoices/download/".$report['file'];
 		return $link;
 		}
@@ -79,9 +75,8 @@ class Email_templates_model extends Base_module_model {
 		$users = $this->db->get_where('fuel_users', array('id' => $invoice['user_id']))->result_array();
         $user = $users[0];
 
-			$this->load->library('my_fuel_notification');
+			$this->load->module_library('invoices','my_fuel_notification');
         if($user['id'] == $invoice['user_id']){
-        $user = $users[0];
 			$params = array();
 			$params['html'] = TRUE;
 			$params['to'] = $user['email'];
@@ -101,7 +96,6 @@ class Email_templates_model extends Base_module_model {
 				$this->db->update('invoices',array('note_sent' => 'yes'));
 				}
         }
-        //return FALSE;
 		}
 		
 	function send_recurring_invoices(){
@@ -163,7 +157,7 @@ class Email_templates_model extends Base_module_model {
 		$now = date("Y-m-d");
 		$unpaids = $this->db->get_where('invoices', array('paid'=>'no', 'published' => 'yes'))->result_array();
 		foreach($unpaids as $u){
-			if(date("Y-m-d", strtotime($u['due_date']." + ".$s['first_reminder']." days")) == $now || (strtotime($u['due_date']) < time() && $s['reminder_days'] > 0 && is_int((strtotime($now) - strtotime($u['due_date']))/(60*60*24*$s['reminder_days'])) )){//if divisible cleanly by 14 then send reminder (ie sends every 14 days)
+			if(date("Y-m-d", strtotime($u['due_date']." + ".$s['first_reminder']." days")) == $now || (strtotime($u['due_date']) < time() && $s['reminder_days'] > 0 && is_int((strtotime($now) - strtotime($u['due_date']))/(60*60*24*$s['reminder_days'])) )){//if divisible cleanly by ,say,14 then send reminder (ie sends every 14 days)
 
                 $this->send_email($u,'reminder');
                 $log = TRUE;

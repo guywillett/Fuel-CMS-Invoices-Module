@@ -11,10 +11,11 @@ $config['nav']['Invoices'] = array(
 $config['invoices']['due_date_default'] = 7;
 $config['invoices']['first_reminder'] = 2;
 $config['invoices']['reminder_days'] = 14;
-$config['invoices']['cron_backup_command'] = $cron_command = 'php '. FCPATH . SELF .' invoices/cron';
+$config['invoices']['cron_backup_command'] = $cron_command = 'php '. FCPATH . SELF .' invoices/cron'; //the command line is used  which means minimal config in the Cronjobs module.
 $config['invoices']['remittance_advice'] = "Please pay as soon as you can!";
-$config['invoices']['invoices_pdf_folder'] = "sub27ksyveo";//something hard to guess, like a password effectively - make sure it is writable
+$config['invoices']['invoices_pdf_folder'] = "sxb27k7yvQo";//something hard to guess, like a password effectively - make sure it is writable and exists in your main application  /assets/pdf folder
 $config['invoices']['domain'] = "www.chamsoft.co.uk/";//must end in a slash "/". Used in links to invoice downloads
+
 // create configurable settings from with the Settings module. You can add/remove field that you don't want configured
 $config['invoices']['settings'] = array();
 $config['invoices']['settings']['due_date_default'] = array('size' => '3', 'value' => '7', 'after_html' => ' days after Invoice Date');
@@ -24,5 +25,5 @@ $config['invoices']['settings']['cron_backup_command'] = array('value' => $confi
 'after_html' => "<br /><br />
 <div class='buttonbar'><ul><li class='unattached'><a href=".fuel_url("tools/cronjobs?command=".urlencode($cron_command))." class='ico ico_invoices'>add an Invoices cronjob</a></li></ul></div>
 "
-);
+);//The button for one-click Cron job adding
 $config['invoices']['settings']['remittance_advice'] = array('type' => 'textarea', 'value' => $config['invoices']['remittance_advice']);

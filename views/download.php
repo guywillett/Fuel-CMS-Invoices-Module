@@ -61,9 +61,9 @@ $link = current_url()."?download=true";
 <div>
 <p>Thank You for downloading your Invoice</p>
 <p><a id="download" href="<?=$link?>"><strong>=></strong> If your Invoice does not download in a few seconds click here</a></p>
-    </div>
+    </div><!--if javascript disabled-->
 <script>
-    setTimeout(function(){
+    setTimeout(function(){ //triggers download, after view has rendered
         window.location.href = "<?=$link?>"
     },1000)
 </script>
