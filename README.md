@@ -46,7 +46,7 @@ Manual
 
 2. Create an "invoices" folder in fuel/modules/ and place the contents of the blog module folder in there.
 
-3. Then to install, type in: <pre>php index.php fuel/installer/install invoices</pre>
+3. Open up a Terminal window, "cd" to your FUEL CMS installation. Then to install, type in: <pre>php index.php fuel/installer/install invoices</pre>
 
 4. Add "invoices" to the the $config['modules_allowed'] in fuel/application/config/MY_fuel.php
 
