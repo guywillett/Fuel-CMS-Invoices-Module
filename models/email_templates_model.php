@@ -92,7 +92,10 @@ class Email_templates_model extends Base_module_model {
 			$params['use_dev_mode'] = FALSE;
 
 			$this->my_fuel_notification->send($params);
-			echo $this->my_fuel_notification->errors();
+            $e = $this->my_fuel_notification->errors();
+            if( ! empty($e)){
+                echo $e;
+            }
 
 			$this->db->where('id',$invoice['id']);
 			if($invoice['note_sent'] = 'no'){
@@ -160,7 +163,7 @@ class Email_templates_model extends Base_module_model {
 		$now = date("Y-m-d");
 		$unpaids = $this->db->get_where('invoices', array('paid'=>'no', 'published' => 'yes'))->result_array();
 		foreach($unpaids as $u){
-			if(date("Y-m-d", strtotime($u['due_date']." + ".$s['first_reminder']." days")) == $now || (strtotime($u['due_date']) < time() && $s['reminder_days'] > 0 && is_int((strtotime($now) - strtotime($u['due_date']))/(60*60*24*$s['reminder_days'])) )){//if divisible cleanly by ,say,14 then send reminder (ie sends every 14 days)
+			if(date("Y-m-d", strtotime($u['due_date']." + ".$s['first_reminder']." days")) == $now || (strtotime($u['due_date']) < strtotime($now) && $s['reminder_days'] > 0 && is_int((strtotime($now) - strtotime($u['due_date']))/(60*60*24*$s['reminder_days'])) )){//if divisible cleanly by ,say,14 then send reminder (ie sends every 14 days)
 
                 $this->send_email($u,'reminder');
                 $log = TRUE;

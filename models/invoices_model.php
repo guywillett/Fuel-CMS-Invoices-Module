@@ -61,6 +61,7 @@ class Invoices_model extends Base_module_model {
 	$fields['set2'] = array('type' => 'fieldset', 'class' => 'collapsible', 'label' => 'Email Notification', 'order' => 63);
 	$fields['send_note']['order'] = 65;
 	$fields['send_note']['label'] = 'Send/Re-send Invoice';
+    $fields['send_note']['after_html'] = " (click 'yes' again to resend)";
 	$fields['copy7'] = array('type' => 'copy', 'tag' => 'p', 'value' => ' ', 'order' => 66);
 	$fields['note_sent']['order'] = 67;
 	$fields['note_sent']['displayonly'] = TRUE;
