@@ -69,7 +69,7 @@ class Invoices_model extends Base_module_model {
 	$fields['copy11'] = array('type' => 'copy', 'tag' => 'p', 'value' => ' ', 'order' => 93);
 	$fields['status'] = array('type' => 'select', 'options' => $status_options);
 	$fields['status']['order'] = '28';
-	$fields['tax']['default'] = 0;
+	$fields['tax']['default'] = $this->fuel->invoices->config('tax');
 	$fields['tax']['after_html'] = ' %';
 	$fields['tax']['size'] = 5;
 	$fields['recur_days']['default'] = 365;

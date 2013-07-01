@@ -8,6 +8,7 @@ $config['nav']['Invoices'] = array(
 'invoices' => 'Invoices',
 'email_templates' => 'Email Templates',
 );
+$config['invoices']['tax'] = 17.5;//default tax %
 $config['invoices']['attach_pdf_to_email'] = TRUE;//default is to attach pdf to emails
 $config['invoices']['due_date_default'] = 7;
 $config['invoices']['first_reminder'] = 2;
@@ -20,6 +21,7 @@ $config['invoices']['domain'] = "www.chamsoft.co.uk/";//must end in a slash "/".
 // create configurable settings from with the Settings module. You can add/remove field that you don't want configured
 $config['invoices']['settings'] = array();
 $config['invoices']['settings']['attach_pdf_to_email'] = array('type'=>'checkbox', 'value'=>'1','checked'=>'checked');
+$config['invoices']['settings']['tax'] = array('size'=> '3', 'value' => '17.5');
 $config['invoices']['settings']['due_date_default'] = array('size' => '3', 'value' => '7', 'after_html' => ' days after Invoice Date');
 $config['invoices']['settings']['first_reminder'] = array('size' => '3', 'value' => '2', 'after_html' => ' days after Due Date');
 $config['invoices']['settings']['reminder_days'] = array('size' => '3', 'value' => '14', 'after_html' => ' days. A reminder is sent every "?" days until it is marked as Paid or Unpublished. Set to "0" to not send reminders.');
