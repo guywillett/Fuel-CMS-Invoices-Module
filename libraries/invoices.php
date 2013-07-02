@@ -22,17 +22,19 @@ class Invoices {
         $file = getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/".$f['id']."_".$f['name'].".pdf";
         $filename = $f['id']."_".$f['name'].".pdf";
         $html = str_replace('\n','',json_encode($this->getInvoiceHTML($f)));
+        $id = uniqid();
         $script ="
 var page = require('webpage').create();
 page.content = $html
 page.paperSize = {format: 'A4', orientation: 'portrait'}
     page.render('$file');
     phantom.exit();";
-        $pa = file_put_contents(getcwd().'/assets/pdf/'.$CI->fuel->invoices->config('invoices_pdf_folder').'/phantomaction.js',$script);
+        $pa = file_put_contents(getcwd().'/assets/pdf/'.$CI->fuel->invoices->config('invoices_pdf_folder').'/'.$id.'phantomaction.js',$script);
         if($pa){
-            $l = escapeshellarg(getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/phantomaction.js");
+            $l = escapeshellarg(getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/'.$id.'phantomaction.js");
 
             shell_exec("phantomjs ".$l);
+            unlink("/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/'.$id.'phantomaction.js");
             return $filename;} else {return "Invoice PDF NOT CREATED!";}
     }
 
