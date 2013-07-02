@@ -31,7 +31,7 @@ page.paperSize = {format: 'A4', orientation: 'portrait'}
     phantom.exit();";
         $pa = file_put_contents(getcwd().'/assets/pdf/'.$CI->fuel->invoices->config('invoices_pdf_folder').'/'.$id.'phantomaction.js',$script);
         if($pa){
-            $l = escapeshellarg(getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/'.$id.'phantomaction.js");
+            $l = escapeshellarg(getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/".$id."phantomaction.js");
 
             shell_exec("phantomjs ".$l);
             unlink("/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/'.$id.'phantomaction.js");
