@@ -35,20 +35,19 @@ Using Git
 ---------
 
 1. Open up a Terminal window, "cd" to your FUEL CMS installation then type:
-    <pre>php index.php fuel/installer/add_git_submodule git://github.com/guywillett/FUEL-CMS-Invoices-Module.git invoices</pre>
+    <pre>php index.php fuel/installer/add_git_submodule git://github.com/guywillett/Fuel-CMS-Invoices-Module.git invoices</pre>
 
 2.  Then to install, type in: <pre>php index.php fuel/installer/install invoices</pre>
 
 Manual
 ------
 
-1. Download the zip file from GitHub: https://github.com/guywillett/FUEL-CMS-Invoices-Module
+1. Download the zip file from GitHub: https://github.com/guywillett/Fuel-CMS-Invoices-Module
 
 2. Create an "invoices" folder in fuel/modules/ and place the contents of the blog module folder in there.
 
 3. Open up a Terminal window, "cd" to your FUEL CMS installation. Then to install, type in: <pre>php index.php fuel/installer/install invoices</pre>
 
-4. Add "invoices" to the the $config['modules_allowed'] in fuel/application/config/MY_fuel.php
 
 Uninstall
 ---------
