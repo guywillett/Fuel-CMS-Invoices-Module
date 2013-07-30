@@ -136,6 +136,7 @@ class Email_templates_model extends Base_module_model {
 
 
                 //create pdf after invoice record because we need the id...
+                $this->load->module_library(INVOICES_FOLDER, 'invoices');
                 $r2['file'] = $file = $this->invoices->getInvoicePDF($r2);//returns filename getInvoicePDF
 
                 $this->db->where(array('id' => $r2['id']));//now update the new invoice with its pdf filename

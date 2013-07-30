@@ -34,7 +34,7 @@ page.paperSize = {format: 'A4', orientation: 'portrait'}
             $l = escapeshellarg(getcwd()."/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/".$id."phantomaction.js");
 
             shell_exec("phantomjs ".$l);
-            unlink("/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/'.$id.'phantomaction.js");
+            unlink("/assets/pdf/".$CI->fuel->invoices->config('invoices_pdf_folder')."/".$id."phantomaction.js");
             return $filename;} else {return "Invoice PDF NOT CREATED!";}
     }
 
